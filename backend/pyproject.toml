@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jobfit-api"
+version = "1.0.0"
+description = "JobFit AI: RAG + agent backend that matches a resume to a job ad"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  "sqlalchemy>=2.0",
+  "psycopg[binary]>=3.2",
+  "pgvector>=0.3",
+  "pydantic-settings>=2.0",
+  "pypdf>=5.0",
+  "openai>=1.50",
+  "fastembed>=0.4",
+  "httpx>=0.27",
+  "python-multipart>=0.0.9",
+  "mcp>=2.0",
+  "pytesseract>=0.3.10",
+  "pypdfium2>=4.30",
+  "python-docx>=1.1",
+  "pillow>=10",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[tool.setuptools]
+packages = ["app"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["B008"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,53 @@
+# One command runs everything:  docker compose up --build
+# Web app: http://localhost:8080   API docs: http://localhost:8000/docs   MCP: http://localhost:8001/mcp
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: jobfit
+      POSTGRES_PASSWORD: jobfit
+      POSTGRES_DB: jobfit
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jobfit"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: ./backend
+    image: jobfit-api
+    env_file:
+      - path: .env
+        required: false   # without it the app runs in demo mode
+    environment:
+      DATABASE_URL: postgresql+psycopg://jobfit:jobfit@db:5432/jobfit
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  mcp:
+    image: jobfit-api
+    command: ["python", "-m", "app.mcp_server"]
+    environment:
+      JOBFIT_API_URL: http://api:8000
+    ports:
+      - "8001:8001"
+    depends_on:
+      api:
+        condition: service_healthy
+
+  web:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  pgdata:

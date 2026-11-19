@@ -1,0 +1,26 @@
+[
+  {
+    "name": "frontend-react",
+    "resume": "@sample_resume",
+    "job": "@sample_job",
+    "expect_requirements": ["React", "TypeScript", "Cypress", "Next.js", "Git"],
+    "expect_matched": ["React", "TypeScript", "Git"],
+    "expect_missing": ["Cypress"]
+  },
+  {
+    "name": "python-backend",
+    "resume": "Sara Khan\nBackend Developer\n• Built REST APIs with Python and FastAPI for a logistics startup.\n• Designed PostgreSQL schemas and wrote complex SQL queries.\n• Containerised services with Docker and deployed them with GitHub Actions CI/CD.\n• Wrote unit tests with pytest.\nSkills: Python, FastAPI, PostgreSQL, Docker, Git, Linux",
+    "job": "Python Backend Engineer\nCompany: Ledgerly\nRequirements\n• Strong Python and FastAPI experience (required).\n• PostgreSQL and SQL.\n• Docker and CI/CD.\n• Experience with Kubernetes.\nNice to have\n• AWS experience is a plus.",
+    "expect_requirements": ["Python", "FastAPI", "PostgreSQL", "Docker", "Kubernetes", "AWS"],
+    "expect_matched": ["Python", "FastAPI", "PostgreSQL", "Docker"],
+    "expect_missing": ["Kubernetes", "AWS"]
+  },
+  {
+    "name": "ml-engineer",
+    "resume": "Bilal Ahmed\nData Scientist\n• Trained image classifiers in PyTorch and deployed them behind a Flask API.\n• Analysed customer data with Pandas and built Power BI dashboards.\n• Presented findings to stakeholders every month.\nSkills: Python, PyTorch, Pandas, SQL, Power BI",
+    "job": "Machine Learning Engineer\nRequirements\n• Python and PyTorch or TensorFlow (must).\n• Experience building LLM applications and RAG pipelines.\n• Vector databases such as pgvector or Pinecone.\n• Good communication skills.\nBonus\n• Docker.",
+    "expect_requirements": ["Python", "PyTorch", "LLM", "RAG", "Vector", "Docker"],
+    "expect_matched": ["Python", "PyTorch"],
+    "expect_missing": ["RAG", "Vector", "Docker"]
+  }
+]
